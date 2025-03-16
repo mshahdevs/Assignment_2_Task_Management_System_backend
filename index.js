@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const connectDB = require('./src/config/db.js');
 const userRoutes = require('./src/routes/userRoutes.js');
+const taskRoutes = require('./src/routes/taskRoutes.js');
 const verifyUser = require('./src/middleware/userMiddleware.js');
 const app = express();
 //Middleware
@@ -16,10 +17,9 @@ app.get('/', (req, res) => {
 
 // User Routes
 app.use('/api/auth', userRoutes);
-//verify user routes
-app.get('/verify', verifyUser, (req, res) => {
-  res.json('Get me on verify routes');
-});
+
+//Task Routes
+app.use('/api/tasks', taskRoutes);
 const port = process.env.PORT;
 app.listen(port, () =>
   console.log(`server started on http://localhost:${port}`)

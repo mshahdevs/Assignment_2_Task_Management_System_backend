@@ -21,6 +21,7 @@ const registerUser = async (req, res) => {
     res.status(201).json({
       _id: user._id,
       name: user.name,
+      email: user.email,
       password: user.password,
     });
   } else {
@@ -38,7 +39,9 @@ const loginUser = async (req, res) => {
   const user = await User.findOne({ email });
 
   //Create jwt token
-  const token = jwt.sign({ email }, process.env.SECRET_KEY);
+  const token = jwt.sign({ email }, process.env.SECRET_KEY, {
+    expiresIn: '12h',
+  });
   if (user) {
     const data = {
       _id: user._id,

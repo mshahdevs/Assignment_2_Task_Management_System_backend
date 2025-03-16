@@ -6,7 +6,7 @@ const verifyUser = async (req, res, next) => {
     // Verify Token
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     if (decoded) {
-      req.user = decoded.name;
+      req.user = decoded;
       next();
     } else {
       res.json('Something went wrong');
