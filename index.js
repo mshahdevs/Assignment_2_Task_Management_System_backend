@@ -1,8 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const connectDB = require('./src/config/db.js');
-const userRoutes = require('./src/routes/userRoutes.js');
-const taskRoutes = require('./src/routes/taskRoutes.js');
+const userRoutes = require('./src/routes/user.js');
+const taskRoutes = require('./src/routes/task.js');
 const app = express();
 
 //Middleware

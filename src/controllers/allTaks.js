@@ -1,11 +1,11 @@
 const taskSchema = require('../models/task');
 const allTasks = async (req, res) => {
   try {
-    const userId = req.user;
-    const { _id } = userId;
+    // const userId = req.user;
+    // const { _id } = userId;
 
     const allTasks = await taskSchema.find();
-    console.log(allTasks);
+
     const extractallTasks = allTasks.map((task) => {
       return {
         _id: task._id,
