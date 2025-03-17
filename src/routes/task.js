@@ -1,8 +1,6 @@
 const express = require('express');
 const verifyUser = require('../middleware/userMiddleware');
-const { createTask } = require('../controllers/createTask');
-const allTasks = require('../controllers/allTaks');
-const deleteTask = require('../controllers/deleteTask');
+const { createTask, allTasks, deleteTask } = require('../controllers/task.js');
 const router = express.Router();
 //Create task
 router.post('/create-task', verifyUser, createTask);
