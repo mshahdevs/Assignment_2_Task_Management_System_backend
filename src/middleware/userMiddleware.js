@@ -5,6 +5,7 @@ const verifyUser = async (req, res, next) => {
     let token = req.headers.authorization.split(' ')[1];
     // Verify Token
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    console.log('decoded', decoded);
     if (decoded) {
       req.user = decoded;
       next();
@@ -12,7 +13,7 @@ const verifyUser = async (req, res, next) => {
       res.json('Something went wrong');
     }
   } catch (error) {
-    res.json('Invalid token');
+    res.status(401).json({ message: 'User is unauthorized' });
   }
 };
 

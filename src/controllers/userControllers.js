@@ -39,7 +39,7 @@ const loginUser = async (req, res) => {
   const user = await User.findOne({ email });
 
   //Create jwt token
-  const token = jwt.sign({ email }, process.env.SECRET_KEY, {
+  const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
     expiresIn: '12h',
   });
   if (user) {
